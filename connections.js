@@ -1,4 +1,5 @@
-// GET: gets chats from api
+//Fuentes consultadas https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
+// Oscar sanchez, 15803
 function getChats() {
     fetch('http://34.210.35.174:7000')
         .then(function(response) {
@@ -64,10 +65,9 @@ function sendMessage() {
         // empty fields
         alert("porfavor ingrese todos los campos");
     } else {
-        // non empty fields
-        // check for text < 140 chars
+        //evitar mas de 140 caracteres
+
         if (text.length <= 140) {
-            // continue
             console.log('preparando para enviar');
             
             // POST request
@@ -81,18 +81,18 @@ function sendMessage() {
             request.open("POST", "http://34.210.35.174:7000");
             request.send(fd);
             
-            // refresh chat list
+            // refresh
             getChats();
 
         } else {
-            // more than 140 chars
+            // solo entra si tiene mas de 140 caracteres
             alert("Texto muy largo")
         }
     }    
 
 }
 
-// checks if there are any urls inside text. Returns an array of found urls.
+// chequeo de URL
 function getUrls(text) {
     var regex = /(https?:\/\/[^\s]+)/g;
     var rawtext = (text || '').toString();
